@@ -77,6 +77,13 @@ static void broadcast(struct mg_connection *nc, const struct mg_str msg) {
 
 Room* GetRoom(std::string roomName, bool IsOwnerRoom) {
   Room* TargetRoom = NULL;
+  
+  //to lowercase
+  for (int i = 0; i < roomName.length(); i++)
+  {
+    roomName[i] = tolower(roomName[i]);
+  }
+
 	for (int i = 0; i < Rooms.size(); ++i) {
 		if (Rooms[i]->StreamingRoomName == roomName) {
 			//printf("Found room %s\n", joinedRoom.c_str());
